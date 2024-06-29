@@ -23,7 +23,7 @@ export default function NavLinks() {
           const isActive = pathname === `/home/channels/${comm}`;
 
           return (
-            <Link key={comm} href={"/home/channels/" + comm}>
+            <Link key={comm} href={"/home/channels/" + comm + "?query=" + query}>
               <li>
                 <span
                   className={` ${isActive ? "bg-opacity-50 bg-gray-700" : ""}`}
