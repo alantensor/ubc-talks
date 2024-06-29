@@ -15,7 +15,7 @@ export default function NavLinks() {
   const query = searchParams.get("query") || "";
 
   return (
-    <ul>
+    <ul>{query}
       {communities
         .filter((comm) => comm.toLowerCase().includes(query.toLowerCase()))
         .map((comm) => {
