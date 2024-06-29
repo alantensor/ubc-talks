@@ -1,12 +1,13 @@
-
 import React from "react";
-import { signIn } from "next-auth/react";
 
-
-
-
-const LoginModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
-    if (!isOpen) return null;
+const LoginModal = ({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) => {
+  if (!isOpen) return null;
 
   return (
     <div className="modal modal-open">
@@ -20,7 +21,7 @@ const LoginModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
         <h3 className="text-lg font-bold mb-4">Welcome to UBC Courses!</h3>
         <button
           className="btn flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg"
-          onClick={() => signIn("google", { callbackUrl: "/home" })}
+          onClick={() => {}}
         >
           Sign in with Google
         </button>

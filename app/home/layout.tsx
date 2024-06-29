@@ -11,7 +11,7 @@ export default function HomeLayout({
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
 
-        <main className="flex flex-row flex-1 bg-slate-700 overflow-y-auto pl-10">
+        <main className="flex flex-row flex-1 bg-slate-700 overflow-y-auto pl-10 pr-10 space-x-5">
           {children}
         </main>
       </div>
