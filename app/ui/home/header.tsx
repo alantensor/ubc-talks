@@ -1,7 +1,13 @@
 "use client";
 import { signIn, signOut, useSession } from "next-auth/react";
+import LoginModal from "./loginmodal";
+import React, { useState } from "react";
 
 export default function Header() {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  //      setIsModalOpen(false);
+
   const { data: session } = useSession();
   // const { data: session } = {
   //   data: {
@@ -60,9 +66,18 @@ export default function Header() {
     );
   } else {
     return (
-      <button className="btn btn-primary" onClick={() => signIn()}>
-        Log in
-      </button>
+      <div className="flex-none">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="btn btn-wide"
+        >
+          Login
+        </button>
+        <LoginModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
+      </div>
     );
   }
 }
