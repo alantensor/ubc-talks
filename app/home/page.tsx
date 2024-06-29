@@ -1,7 +1,16 @@
-import { getUsers } from "@/app/lib/data";
-import { useSession } from "next-auth/react";
-
 // Feed with infinite scroll
+
+import { createBrowserClient } from "@supabase/ssr";
+
 export default async function Home() {
-  return <p>home</p>;
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+  supabase.auth.signInWithOAuth({
+    provider: "google",
+  });
+  const { data: notes } = await supabase.from("notes").select();
+
+  return <pre>{JSON.stringify(notes, null, 2)}</pre>;
 }

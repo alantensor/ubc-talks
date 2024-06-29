@@ -1,7 +1,6 @@
 import Widgets from "./widgets";
 import PostCard from "./post";
 // import { headers } from "next/headers";
-import { getPostsByChannel } from "@/app/lib/data";
 export default function PostsWrapper() {
   // const headersList = headers();
   // // const domain = headersList.get('host') || "";
@@ -67,8 +66,8 @@ export default function PostsWrapper() {
   ];
   return (
     <>
-      {testposts.map((post) => {
-        return <PostCard post={post} />;
+      {testposts.map((post, i) => {
+        return <PostCard key={i} post={post} />;
       })}
     </>
   );

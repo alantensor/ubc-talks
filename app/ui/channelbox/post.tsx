@@ -1,9 +1,6 @@
-import { getSession } from "next-auth/react";
-
-export default async function PostCard({ post }: { post: any }) {
+export default function PostCard({ post }: { post: any }) {
   let postcolor = "blue";
   const { title, description, channel_id, op, upvote_count, createdAt } = post;
-  const session = await getSession();
 
   async function handlePostClick() {
     console.log("Post clicked");
