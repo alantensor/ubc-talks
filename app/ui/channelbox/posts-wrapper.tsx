@@ -11,7 +11,7 @@ export default async function PostsWrapper({ channel }: { channel: string }) {
     .from("posts")
     .select()
     .eq("channel_id", channel);
-  // console.log(posts);
+  console.log(posts);
   if (posts?.length == 0) return <p>no posts</p>;
 
   return (
