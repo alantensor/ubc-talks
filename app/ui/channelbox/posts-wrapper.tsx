@@ -1,6 +1,7 @@
 import Widgets from "./widgets";
 import PostCard from "./post";
 import { createClient } from "@/app/lib/supabase/server";
+import Link from "next/link";
 
 export default async function PostsWrapper({ channel }: { channel: string }) {
   const supabase = createClient();
@@ -17,7 +18,11 @@ export default async function PostsWrapper({ channel }: { channel: string }) {
   return (
     <>
       {posts!.map((post, i) => {
-        return <PostCard key={i} post={post} />;
+        return (
+          <Link href={channel + "/post/" + post.id}>
+            <PostCard key={i} post={post} />
+          </Link>
+        );
       })}
     </>
   );

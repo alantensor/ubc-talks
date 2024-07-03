@@ -1,6 +1,6 @@
 import { createClient } from "@/app/lib/supabase/server";
 export default async function PostCard({
-  post,
+  post, 
 }: {
   post: {
     id: number;

@@ -15,7 +15,7 @@ export default async function PostsWrapper({ postid }: { postid: number }) {
   if (posts) {
     return (
       <>
-        return <PostCard key={postid} post={posts[0]} />;{/* comments */}
+        <PostCard key={postid} post={posts[0]} />;{/* comments */}
       </>
     );
   } else {
