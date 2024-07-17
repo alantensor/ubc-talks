@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         />
         <textarea
           name="body"
-          className="textarea textarea-bordered w-full h-2/3"
+          className="textarea textarea-bordered w-full h-2/3 resize-none"
           placeholder="description"
         ></textarea>
         <button type="submit" className="btn btn-primary w-32">
