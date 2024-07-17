@@ -1,15 +1,15 @@
 import { createClient } from "@/app/lib/supabase/server";
 export default async function PostCard({
-  post,
+  post, 
 }: {
   post: {
     id: number;
-    created_at: string;
+    created_at: Date;
     op: string;
     title: string;
     body: string;
-    upvotes: number;
-    downvotes: number;
+    upvotes: string[]; // to avoid multiple from same user
+    downvotes: string[];
     views: number;
     channel_id: string;
   };

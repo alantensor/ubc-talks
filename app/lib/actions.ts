@@ -23,7 +23,7 @@ export async function createPost(id: string, formdata: FormData) {
         .from("posts")
         .insert([
           {
-            created_at: new Date().toDateString(),
+            created_at: new Date(),
             op: uid.toString(),
             title: title.toString(),
             body: body.toString(),
