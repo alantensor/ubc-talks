@@ -3,6 +3,8 @@ import { UserGroupIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import communities from "@/app/lib/communities";
 import { User } from "@supabase/supabase-js";
+import { updatePinned } from "@/app/lib/actions";
+import toast, { Toaster } from "react-hot-toast";
 
 const dummyIcon = UserGroupIcon;
 
@@ -11,10 +13,26 @@ const dummyIcon = UserGroupIcon;
 export default function NavLinks({
   filter,
   user,
+  pinned,
+  setPinned,
 }: {
   filter: string;
   user: User | null;
+  pinned: any[];
+  setPinned: (value: any[]) => void;
 }) {
+  const addToPinned = (channel_id: string) => {
+    updatePinned(channel_id);
+    const isPinned = pinned.some((item) => item.channel_id === channel_id);
+    if (!isPinned) {
+      setPinned(pinned.concat({ channel_id: channel_id }));
+      toast.success("Pinned!");
+    } else toast.error("Already Pinned!");
+  };
+
+  // let comms = communities.filter((comm) =>
+  //   pinned.some((item) => item.channel_id == comm)
+  // );
   return (
     <>
       {communities
@@ -28,9 +46,28 @@ export default function NavLinks({
                   <CommProfilePic className="w-4 " />
                   {comm}
                   {user && (
-                    <button className=" btn btn-xs btn-ghost btn-active hover:bg-white m-0">
-                      Pin
-                    </button>
+                    <>
+                      <button
+                        onClick={(e) => addToPinned(comm)}
+                        className=" btn btn-xs btn-ghost btn-active hover:bg-white m-0"
+                      >
+                        Pin
+                      </button>
+                      <Toaster
+                        toastOptions={{
+                          success: {
+                            style: {
+                              boxShadow: "none",
+                            },
+                          },
+                          error: {
+                            style: {
+                              boxShadow: "none",
+                            },
+                          },
+                        }}
+                      />
+                    </>
                   )}
                 </span>
               </li>

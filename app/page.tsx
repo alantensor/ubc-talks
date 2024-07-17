@@ -1,5 +1,7 @@
-// Unique to the home page ("/"), {children}
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <h1>Landing page</h1>;
+  redirect("/home");
+
+  // return <h1>Landing page</h1>;
 }

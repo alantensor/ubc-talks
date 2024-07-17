@@ -1,7 +1,5 @@
-import Widgets from "./widgets";
 import PostCard from "./post";
 import { createClient } from "@/app/lib/supabase/server";
-import Link from "next/link";
 
 export default async function PostsWrapper({ channel }: { channel: string }) {
   const supabase = createClient();
@@ -11,18 +9,20 @@ export default async function PostsWrapper({ channel }: { channel: string }) {
   const { data: posts } = await supabase
     .from("posts")
     .select()
+    .order("id", { ascending: false })
     .eq("channel_id", channel);
   // console.log(posts);
-  if (posts?.length == 0) return <p>no posts</p>;
+  if (posts?.length == 0)
+    return (
+      <div className="flex w-full  m-auto  justify-center items-center">
+        no posts
+      </div>
+    );
 
   return (
     <>
       {posts!.map((post, i) => {
-        return (
-          <Link href={channel + "/post/" + post.id}>
-            <PostCard key={i} post={post} />
-          </Link>
-        );
+        return <PostCard key={i} post={post} />;
       })}
     </>
   );

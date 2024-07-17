@@ -2,6 +2,7 @@ import { createClient } from "@/app/lib/supabase/client";
 import { useState, useEffect } from "react";
 import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Header({
   user,
@@ -23,7 +24,7 @@ export default function Header({
     };
 
     checkUser();
-  }, []);
+  }, [setUser, supabase.auth]);
 
   const signIn = async () => {
     try {
@@ -36,7 +37,7 @@ export default function Header({
     } catch (error) {
       console.error("Error signing in", error);
     }
-    router.refresh();
+    router.push("/home");
   };
 
   const signOut = async () => {
@@ -44,7 +45,8 @@ export default function Header({
     await supabase.auth.signOut();
 
     setUser(null); // Update state to reflect that user has signed out
-    router.refresh();
+
+    router.push("/");
   };
 
   if (user == null) {
@@ -53,7 +55,6 @@ export default function Header({
         <button className="btn btn-ghost btn-active" onClick={signIn}>
           Sign in
         </button>
-        <button className="btn btn-ghost btn-active">Sign up</button>
       </div>
     );
   } else
@@ -85,9 +86,6 @@ export default function Header({
                   Profile
                   <span className="badge">New</span>
                 </a>
-              </li>
-              <li>
-                <a>Settings</a>
               </li>
               <li>
                 <button onClick={signOut}>Logout</button>

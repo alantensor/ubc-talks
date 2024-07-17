@@ -35,6 +35,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <button type="submit" className="btn btn-primary w-32">
           Post
         </button>
+
         <Link href={`/home/channels/${params.id}`}>
           <button className="btn btn-primary w-16 ml-5">Cancel</button>
         </Link>
