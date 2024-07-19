@@ -111,7 +111,9 @@ export default function Header({
               </li>
             </ul>
           </div>
-          <div className="m-auto ml-2">{user.user_metadata.full_name}</div>
+          <div className="m-auto ml-2 text-white">
+            {user.user_metadata.full_name}
+          </div>
         </div>
         {/* <button className="bg-orange-400 rounded-full py-1 px-3 text-slate-200">
         New Post
