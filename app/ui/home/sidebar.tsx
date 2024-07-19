@@ -35,7 +35,7 @@ const Sidebar = () => {
   return (
     <aside className="hidden sm:block bg-black overflow-y-scroll p-5">
       <Header user={currentUser} setUser={setCurrentUser} />
-      <h1 className="text-4xl font-bold my-8 bg-neutral-800 p-10 rounded-2xl">
+      <h1 className="text-4xl text-white font-bold my-8 bg-neutral-800 p-10 rounded-2xl">
         <Link href="/">
           UBC <span className="text-blue-500">Talks</span>
         </Link>
