@@ -24,7 +24,7 @@ export default function SearchBar({
       <input
         type="text"
         placeholder="Search..."
-        className="block w-full bg-sky-700 text-white rounded-full pl-10 pr-4 py-1.5 focus:outline-none"
+        className="block w-full bg-neutral-800 text-white rounded-full pl-10 pr-4 py-1.5 focus:outline-none"
         onChange={onChange}
       />
     </div>

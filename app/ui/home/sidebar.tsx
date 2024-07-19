@@ -33,17 +33,22 @@ const Sidebar = () => {
 
   // console.log(pinnedChannels);
   return (
-    <aside className="hidden sm:block bg-sky-800 overflow-y-scroll p-5">
+    <aside className="hidden sm:block bg-black overflow-y-scroll p-5">
       <Header user={currentUser} setUser={setCurrentUser} />
+      <h1 className="text-4xl font-bold my-8 bg-neutral-800 p-10 rounded-2xl">
+        <Link href="/">
+          UBC <span className="text-blue-500">Talks</span>
+        </Link>
+      </h1>
 
       <SearchBar onChange={(e) => setFilter(e.target.value)} />
-      <ul className="menu bg-sky-800-200 w-56">
+      <ul className="menu text-white w-56">
         {/* <li>
           <Link href={"/home"}>🏠&emsp;Home</Link>
         </li> */}
         <li>
           <details open>
-            <summary>📌&emsp;Pinned</summary>
+            <summary className="font-semibold text-lg">📌&emsp;Pinned</summary>
             <ul>
               {pinnedChannels.map(({ channel_id }, i) => {
                 return (
@@ -77,7 +82,7 @@ const Sidebar = () => {
         </li>
         <li>
           <details open>
-            <summary>📖&emsp;Courses</summary>
+            <summary className="font-semibold text-lg">📖&emsp;Courses</summary>
             <ul>
               <NavLinks
                 filter={filter}

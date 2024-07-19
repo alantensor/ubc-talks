@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
+import { FcGoogle } from "react-icons/fc";
+import { revalidatePath } from "next/cache";
 
 const getURL = () => {
   let url =
@@ -59,15 +62,17 @@ export default function Header({
     setUser(null); // Update state to reflect that user has signed out
 
     router.push("/");
+    router.refresh();
   };
 
   if (user == null) {
     return (
-      <div className="block space-y-5 space-x-3">
-        <button className="btn btn-ghost btn-active" onClick={signIn}>
-          Sign in
-        </button>
-      </div>
+      <button
+        onClick={signIn}
+        className="flex items-center space-x-2 text-white font-bold"
+      >
+        <FcGoogle size={24} /> <p>Sign In</p>
+      </button>
     );
   } else
     return (
@@ -80,12 +85,14 @@ export default function Header({
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img
+                <Image
                   alt="Tailwind CSS Navbar component"
                   src={
                     user.user_metadata.avatar_url ||
                     "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                   }
+                  width={40}
+                  height={40}
                 />
               </div>
             </div>
@@ -93,12 +100,12 @@ export default function Header({
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
-                <a className="justify-between">
+              {/* <li>
+                <Link href="/profile" className="justify-between">
                   Profile
                   <span className="badge">New</span>
-                </a>
-              </li>
+                </Link>
+              </li> */}
               <li>
                 <button onClick={signOut}>Logout</button>
               </li>

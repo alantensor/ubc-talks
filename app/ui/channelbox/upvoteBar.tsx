@@ -3,6 +3,7 @@
 import { getPosts, updatePost } from "@/app/lib/actions";
 import { User } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function UpvoteBar({
   post,
@@ -36,6 +37,13 @@ export default function UpvoteBar({
   let downs = downvotes.length;
 
   function handleClick(like: boolean) {
+    if (user == "anonymous") {
+      toast.error("Sign in to vote!", {
+        duration: 1000,
+        position: "bottom-right",
+      });
+      return;
+    }
     console.log(prev_vote, ups, downs);
     if (prev_vote == null && like) {
       setPrev("up");
@@ -74,6 +82,7 @@ export default function UpvoteBar({
   return (
     <>
       <div className="join absolute bottom-0 left-5 ">
+        <Toaster />
         <div className="flex items-center">
           <p className="text-sm">{ups}</p>
           <button
