@@ -6,7 +6,7 @@
 
 App deployed [here](https://ubc-talks-264ncfoefq-uw.a.run.app/home) using Google Cloud Run via Docker container.
 
-![Screenshot from 2024-07-19 18-03-16](https://github.com/user-attachments/assets/5fbee12c-36e0-49d1-a3b0-e36272b06592)
+![Screenshot from 2024-07-19 18-29-15](https://github.com/user-attachments/assets/7aa6c808-9d5e-4cf0-8057-4f50a300267a)
 
 ### Technologies Used
 * Typescript
