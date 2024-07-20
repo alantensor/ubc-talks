@@ -21,16 +21,19 @@ export default async function Page({ params }: { params: { id: string } }) {
       <h1>Community: {params.id}</h1>
       <form action={postWithChanneID} className="h-full space-y-5 p-5">
         <input type="hidden" name="channel" value={params.id} />
+       
         <input
           name="title"
           type="text"
-          placeholder="Title"
-          className="input input-bordered input-sm w-full max-w-xs"
+          placeholder="Enter your title here"
+          className="bg-slate-700 input text-white input-bordered font-bold w-full"
+          maxLength={300}
+          required={true}
         />
         <textarea
           name="body"
-          className="textarea textarea-bordered w-full h-2/3 resize-none"
-          placeholder="description"
+          className="bg-slate-700 text-white textarea textarea-bordered w-full h-2/3 resize-none"
+          placeholder="Enter description"
         ></textarea>
         <button type="submit" className="btn btn-primary w-32">
           Post
