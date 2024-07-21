@@ -8,7 +8,7 @@ import { Suspense } from "react";
 export default async function Page({ params }: { params: { id: string } }) {
   const supabase = createClient();
   const { data, error } = await supabase.auth.getUser();
-  console.log(data.user);
+  // console.log(data.user);
 
   return (
     <div className="flex flex-col p-5 m-auto w-2/3 h-screen ">

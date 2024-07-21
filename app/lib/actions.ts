@@ -47,14 +47,15 @@ export async function updatePinned(channel: string) {
   const { data, error } = await supabase.auth.getUser();
 
   if (error) {
+
     console.log(error.message);
     return;
   }
 
   const uid = data.user.id;
 
+
   if (uid) {
-    // console.log(uid, channel);
     try {
       const { data, error } = await supabase
         .from("pinned_channels")
@@ -65,6 +66,7 @@ export async function updatePinned(channel: string) {
           },
         ])
         .select();
+
     } catch (error) {
       console.log(error);
     }
@@ -102,10 +104,11 @@ export async function getPosts(channel: string) {
     .eq("channel_id", channel);
   return posts;
 }
+
+
 export async function getPinned() {
   const supabase = createClient();
   const { data, error } = await supabase.auth.getUser();
-
   if (error) {
     console.log(error.message);
     return;
@@ -118,9 +121,9 @@ export async function getPinned() {
   let { data: pinned_channels } = await supabase
     .from("pinned_channels")
     .select("*")
-    .eq("op", uid.toString());
+    // .eq("op", uid.toString()); 
 
-  // console.log(pinned_channels);
+  console.log("t",pinned_channels);
   revalidatePath(`/`);
   return pinned_channels;
 }

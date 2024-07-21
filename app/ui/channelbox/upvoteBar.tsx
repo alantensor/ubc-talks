@@ -60,11 +60,11 @@ export default function UpvoteBar({
       setDownvotes(downvotes.filter((item) => item !== user));
       setUpvotes([...upvotes, user]);
     }
-    console.log("From handleClick:", upvotes, downvotes);
+    // console.log("From handleClick:", upvotes, downvotes);
   }
 
   useEffect(() => {
-    console.log("From useEffect:", upvotes, downvotes);
+    // console.log("From useEffect:", upvotes, downvotes);
     if (prev_vote == null) return;
 
     const updateVotes = async () => {
