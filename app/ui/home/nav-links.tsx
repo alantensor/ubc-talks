@@ -38,6 +38,7 @@ export default function NavLinks({
       {communities
         .filter((comm) => comm.toLowerCase().includes(filter.toLowerCase()))
         .map((comm, i) => {
+          const isPinned = pinned.some((item) => item.channel_id === comm);
           const CommProfilePic = dummyIcon;
           return (
             <Link key={i} href={`/home/channels/${comm}`}>
@@ -45,7 +46,7 @@ export default function NavLinks({
                 <span>
                   <CommProfilePic className="w-4 " />
                   {comm}
-                  {user && (
+                  {user && !isPinned && (
                     <>
                       <button
                         onClick={(e) => addToPinned(comm)}

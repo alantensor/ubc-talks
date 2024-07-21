@@ -123,7 +123,7 @@ export async function getPinned() {
     .select("*")
     // .eq("op", uid.toString()); 
 
-  console.log("t",pinned_channels);
+  // console.log("t",pinned_channels);
   revalidatePath(`/`);
   return pinned_channels;
 }
